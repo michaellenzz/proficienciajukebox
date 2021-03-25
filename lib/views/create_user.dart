@@ -56,7 +56,7 @@ class _CreateUserState extends State<CreateUser> {
         backgroundColor: Colors.blue,
       ),
       body: Container(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(12),
         child: isLoading == true ? Center(child: CircularProgressIndicator(),) :
           Form(
             key: _formKey,

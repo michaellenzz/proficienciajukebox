@@ -134,7 +134,7 @@ class _ListUsersState extends State<ListUsers> {
               onPressed: (){
                 Navigator.pop(context);
               },
-              child: Text("Cancelar")
+              child: Text("Ok")
           ),
         ],
       ));

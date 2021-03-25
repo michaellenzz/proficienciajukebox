@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proficienciajukebox/views/create_user.dart';
 import 'package:proficienciajukebox/views/home.dart';
-import 'package:proficienciajukebox/views/login.dart';
 
 void main() {
   runApp(MyApp());
