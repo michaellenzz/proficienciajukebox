@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:proficienciajukebox/util/api.dart';
 import 'package:proficienciajukebox/util/state_user.dart';
 import 'package:proficienciajukebox/views/create_user.dart';
 import 'package:proficienciajukebox/views/dialog_new_hash.dart';
@@ -12,10 +13,6 @@ class ListUsers extends StatefulWidget {
 }
 
 class _ListUsersState extends State<ListUsers> {
-
-  var hashCrud = 'b8dd982558704805a3c52895c53916f2';
-
-
 
   TextStyle _styleTitle = TextStyle(fontWeight: FontWeight.w700, fontSize: 18);
   TextStyle _styleContent = TextStyle(fontWeight: FontWeight.w400, fontSize: 18);
@@ -110,7 +107,7 @@ class _ListUsersState extends State<ListUsers> {
 
   Future getUsers() async {
     try {
-      Response response = await Dio().get('https://crudcrud.com/api/$hashCrud/users');
+      Response response = await Dio().get('https://crudcrud.com/api/${Api().hashCrud}/users');
       return response.data;
     } catch (e) {
       print(e);
@@ -124,7 +121,7 @@ class _ListUsersState extends State<ListUsers> {
 
   deleteUser(id)async{
     try {
-      Response response = await Dio().delete('https://crudcrud.com/api/$hashCrud/users/$id');
+      Response response = await Dio().delete('https://crudcrud.com/api/${Api().hashCrud}/users/$id');
       showDialog(
           context: context, builder: (context) => AlertDialog(
         title: Text('Apagado com sucesso!',

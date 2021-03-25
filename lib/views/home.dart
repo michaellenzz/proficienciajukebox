@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: Text('Meu App'),
+      title: Text('Proficiencia'),
         centerTitle: true,
     ),
       floatingActionButton: FloatingActionButton.extended(
@@ -58,7 +58,7 @@ class Home extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateUser()));
                 },
                 child: Text(
-                  "Cadastrar-se",
+                  "Cadastre-se",
                   style:
                   TextStyle(color: Colors.white, fontSize: 18),
                 )),

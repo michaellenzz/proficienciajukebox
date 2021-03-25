@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:proficienciajukebox/util/api.dart';
 import 'package:proficienciajukebox/util/state_user.dart';
 import 'package:proficienciajukebox/views/dialog_new_hash.dart';
 import 'package:proficienciajukebox/views/dialog_reset_password.dart';
@@ -19,10 +20,6 @@ class _LoginState extends State<Login> {
   final _passController = TextEditingController();
 
   bool isLoading;
-
-  var hashCrud = 'b8dd982558704805a3c52895c53916f2';
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +107,7 @@ class _LoginState extends State<Login> {
     String passMd5 = md5.convert(utf8.encode(password)).toString();
 
     try {
-      Response response = await Dio().get('https://crudcrud.com/api/$hashCrud/users');
+      Response response = await Dio().get('https://crudcrud.com/api/${Api().hashCrud}/users');
       for(int i = 0; i < response.data.length; i++){
         if(response.data[i]['email'] == email && response.data[i]['password'] == passMd5){
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ListUsers()));

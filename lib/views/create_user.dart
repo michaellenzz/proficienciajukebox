@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:crypto/crypto.dart';
+import 'package:proficienciajukebox/util/api.dart';
 import 'package:proficienciajukebox/util/state_user.dart';
 import 'package:proficienciajukebox/views/dialog_new_hash.dart';
 import 'dart:convert';
 import 'package:proficienciajukebox/views/list_users.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 
 class CreateUser extends StatefulWidget {
 
@@ -22,11 +24,9 @@ class _CreateUserState extends State<CreateUser> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _dateController = TextEditingController();
+  var _dateController = new MaskedTextController(mask: '00/00/0000');
   final _passController = TextEditingController();
   bool isLoading;
-
-  var hashCrud = 'b8dd982558704805a3c52895c53916f2';
 
   final user;
   _CreateUserState(this.user){
@@ -146,7 +146,7 @@ class _CreateUserState extends State<CreateUser> {
     String passMd5 = md5.convert(utf8.encode(password)).toString();
 
     try {
-      Response response = await Dio().post("https://crudcrud.com/api/$hashCrud/users",
+      Response response = await Dio().post("https://crudcrud.com/api/${Api().hashCrud}/users",
           data: {
             'name': name,
             'email': email,
@@ -175,7 +175,7 @@ class _CreateUserState extends State<CreateUser> {
     String passMd5 = md5.convert(utf8.encode(password)).toString();
 
     try {
-      Response response = await Dio().put("https://crudcrud.com/api/$hashCrud/users/${user['_id']}",
+      Response response = await Dio().put("https://crudcrud.com/api/${Api().hashCrud}/users/${user['_id']}",
           data: {
             'name': name,
             'email': email,
